@@ -8,11 +8,40 @@
 import SwiftUI
 
 struct MoviesListView: View {
+    
+    @StateObject var viewModel: MoviesListViewModel
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationView {
+            Group {
+                if viewModel.isLoading {
+                    ProgressView()
+                } else if let error = viewModel.errorMessage {
+                    Text(error)
+                } else {
+                    List(viewModel.movies, id: \.id) { movie in
+                        VStack(alignment: .leading) {
+                            Text(movie.title)
+                                .font(.headline)
+                            
+                            Text(movie.year)
+                                .font(.subheadline)
+                        }
+                    }
+                }
+            }
+            .navigationTitle("Movies")
+            .task{
+                viewModel.loadMovies()
+            }
+        }
     }
 }
 
 #Preview {
-    MoviesListView()
+    MoviesListView(
+        viewModel: MoviesListViewModel(
+            repository: MoviesRepositoryImpl()
+        )
+    )
 }
