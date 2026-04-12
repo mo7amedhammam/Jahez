@@ -6,10 +6,15 @@
 //
 
 //Genre
+struct GenresResponseDTO: Decodable {
+    let genres: [GenreDTO]
+}
+
 struct GenreDTO: Decodable {
     let id: Int
     let name: String
 }
+
 struct Genre {
     let id: Int
     let name: String

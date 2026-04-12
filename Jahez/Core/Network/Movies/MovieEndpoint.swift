@@ -66,12 +66,13 @@ extension MoviesEndpoint {
         case let .trending(page, includeAdult, sortBy):
             return [
                 QueryKeys.page: page,
-                QueryKeys.includeAdult: includeAdult,
-                QueryKeys.sortBy: sortBy.rawValue
+                QueryKeys.includeAdult: includeAdult ? "true" : "false",
+                QueryKeys.sortBy: sortBy.rawValue,
+                "language": "en-US"
             ]
             
         case .details, .genres:
-            return nil
+            return ["language": "en-US"]
         }
     }
     
@@ -81,3 +82,4 @@ extension MoviesEndpoint {
         ]
     }
 }
+

@@ -44,4 +44,18 @@ struct APIErrorResponse: Decodable {
     let status_message: String?
     let status_code: Int?
     let success: Bool?
+    let messageText: String?
+    let errorText: String?
+
+    enum CodingKeys: String, CodingKey {
+        case status_message
+        case status_code
+        case success
+        case messageText = "message"
+        case errorText = "error"
+    }
+
+    var message: String? {
+        status_message ?? messageText ?? errorText
+    }
 }

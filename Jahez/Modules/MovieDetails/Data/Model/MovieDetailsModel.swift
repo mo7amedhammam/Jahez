@@ -46,6 +46,10 @@ struct MovieDetails {
     let backdropPath: String?
     let status: String
     let tagline: String
+    let homepage: String
+    let budget: Int
+    let revenue: Int
+    let languages: [String]
 }
 
 extension MovieDetailsDTO {
@@ -57,10 +61,14 @@ extension MovieDetailsDTO {
             runtime: runtime ?? 0,
             releaseDate: releaseDate ?? "",
             genres: genres?.map { $0.toDomain() } ?? [],
-            posterPath: posterPath,
-            backdropPath: backdropPath,
+            posterPath: posterPath.map { AppConstants.imageBaseURL + $0 },
+            backdropPath: backdropPath.map { AppConstants.imageBaseURL + $0 },
             status: status ?? "",
-            tagline: tagline ?? ""
+            tagline: tagline ?? "",
+            homepage: homepage ?? "",
+            budget: budget ?? 0,
+            revenue: revenue ?? 0,
+            languages: spokenLanguages?.map(\.englishName) ?? []
         )
     }
 }

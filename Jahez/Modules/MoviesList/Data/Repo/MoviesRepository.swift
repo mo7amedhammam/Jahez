@@ -6,14 +6,23 @@
 //
 import Combine
 
-// Domain Layer (Protocol)
+//MARK: Domain Layer (Protocol)
 protocol MoviesRepository {
+    func fetchGenres() -> AnyPublisher<[Genre], Error>
     func fetchMovies(page: Int) -> AnyPublisher<[Movie], Error>
 }
 
 //MARK: Data Layer (Implementation)
 class MoviesRepositoryImpl: MoviesRepository {
     
+    func fetchGenres() -> AnyPublisher<[Genre], Error> {
+        APIClient.shared
+            .request(GenresResponseDTO.self, MoviesEndpoint.genres)
+            .map { response in
+                response.genres.map { $0.toDomain() }
+            }
+            .eraseToAnyPublisher()
+    }
     func fetchMovies(page: Int) -> AnyPublisher<[Movie], Error> {
         APIClient.shared
             .request(MoviesResponseDTO.self,
@@ -23,4 +32,5 @@ class MoviesRepositoryImpl: MoviesRepository {
             }
             .eraseToAnyPublisher()
     }
+
 }
