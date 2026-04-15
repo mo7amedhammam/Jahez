@@ -12,11 +12,27 @@
 		90BE85F52F89705900AB7E8B /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 90BE85F42F89705900AB7E8B /* Alamofire */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		905C5F7F2F8FDE4900E14D7B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 90BE85B12F894CF000AB7E8B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 90BE85B82F894CF000AB7E8B;
+			remoteInfo = Jahez;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
-		905C5EF42F8FCE7A00E14D7B /* Jahez.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = Jahez.app; path = "/Users/mohamedhammam/Desktop/personal/Work/Jahez/build/Debug-iphoneos/Jahez.app"; sourceTree = "<absolute>"; };
+		905C5F7B2F8FDE4900E14D7B /* JahezTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JahezTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		90D0CDB62F8FF39C001DBA66 /* Jahez.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jahez.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		905C5F7C2F8FDE4900E14D7B /* JahezTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = JahezTests;
+			sourceTree = "<group>";
+		};
 		90BE85BB2F894CF000AB7E8B /* Jahez */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = Jahez;
@@ -25,6 +41,13 @@
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		905C5F782F8FDE4900E14D7B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		90BE85B62F894CF000AB7E8B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -42,12 +65,38 @@
 			isa = PBXGroup;
 			children = (
 				90BE85BB2F894CF000AB7E8B /* Jahez */,
+				905C5F7B2F8FDE4900E14D7B /* JahezTests.xctest */,
+				905C5F7C2F8FDE4900E14D7B /* JahezTests */,
+				90D0CDB62F8FF39C001DBA66 /* Jahez.app */,
 			);
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		905C5F7A2F8FDE4900E14D7B /* JahezTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 905C5F812F8FDE4900E14D7B /* Build configuration list for PBXNativeTarget "JahezTests" */;
+			buildPhases = (
+				905C5F772F8FDE4900E14D7B /* Sources */,
+				905C5F782F8FDE4900E14D7B /* Frameworks */,
+				905C5F792F8FDE4900E14D7B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				905C5F802F8FDE4900E14D7B /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				905C5F7C2F8FDE4900E14D7B /* JahezTests */,
+			);
+			name = JahezTests;
+			packageProductDependencies = (
+			);
+			productName = JahezTests;
+			productReference = 905C5F7B2F8FDE4900E14D7B /* JahezTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		90BE85B82F894CF000AB7E8B /* Jahez */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 90BE85C42F894CF300AB7E8B /* Build configuration list for PBXNativeTarget "Jahez" */;
@@ -70,7 +119,7 @@
 				908251032F8FA59900EE5FB3 /* RealmSwift */,
 			);
 			productName = Jahez;
-			productReference = 905C5EF42F8FCE7A00E14D7B /* Jahez.app */;
+			productReference = 90D0CDB62F8FF39C001DBA66 /* Jahez.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -83,6 +132,10 @@
 				LastSwiftUpdateCheck = 2640;
 				LastUpgradeCheck = 2640;
 				TargetAttributes = {
+					905C5F7A2F8FDE4900E14D7B = {
+						CreatedOnToolsVersion = 26.4;
+						TestTargetID = 90BE85B82F894CF000AB7E8B;
+					};
 					90BE85B82F894CF000AB7E8B = {
 						CreatedOnToolsVersion = 26.4;
 					};
@@ -108,11 +161,19 @@
 			projectRoot = "";
 			targets = (
 				90BE85B82F894CF000AB7E8B /* Jahez */,
+				905C5F7A2F8FDE4900E14D7B /* JahezTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		905C5F792F8FDE4900E14D7B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		90BE85B72F894CF000AB7E8B /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -123,6 +184,13 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		905C5F772F8FDE4900E14D7B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		90BE85B52F894CF000AB7E8B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -132,7 +200,57 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		905C5F802F8FDE4900E14D7B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 90BE85B82F894CF000AB7E8B /* Jahez */;
+			targetProxy = 905C5F7F2F8FDE4900E14D7B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		905C5F822F8FDE4900E14D7B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5S2882FKQQ;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Astek.JahezTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Jahez.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Jahez";
+			};
+			name = Debug;
+		};
+		905C5F832F8FDE4900E14D7B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5S2882FKQQ;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Astek.JahezTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Jahez.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Jahez";
+			};
+			name = Release;
+		};
 		90BE85C22F894CF300AB7E8B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -321,6 +439,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		905C5F812F8FDE4900E14D7B /* Build configuration list for PBXNativeTarget "JahezTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				905C5F822F8FDE4900E14D7B /* Debug */,
+				905C5F832F8FDE4900E14D7B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		90BE85B42F894CF000AB7E8B /* Build configuration list for PBXProject "Jahez" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
