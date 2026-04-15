@@ -18,6 +18,7 @@ struct MoviesResponseDTO: Decodable {
         case totalResults = "total_results"
     }
 }
+
 struct MovieDTO: Decodable {
     let id: Int
     let title: String
@@ -47,7 +48,13 @@ struct MovieDTO: Decodable {
     }
 }
 
-struct Movie {
+struct MoviesPage {
+    let page: Int
+    let totalPages: Int
+    let movies: [Movie]
+}
+
+struct Movie: Codable {
     let id: Int
     let title: String
     let posterURL: String?
@@ -55,6 +62,16 @@ struct Movie {
     let year: String
     let rating: Double
     let genreIds: [Int]
+}
+
+extension MoviesResponseDTO {
+    func toDomain() -> MoviesPage {
+        MoviesPage(
+            page: page,
+            totalPages: totalPages,
+            movies: results.map { $0.toDomain() }
+        )
+    }
 }
 
 extension MovieDTO {

@@ -16,10 +16,13 @@ class MoviesListViewModel: ObservableObject {
     @Published var searchText = ""
     @Published var selectedGenreID: Int?
     @Published var isLoading = false
+    @Published var isLoadingMore = false
     @Published var errorMessage: String?
 
     private let repository: MoviesRepository
     private var cancellables = Set<AnyCancellable>()
+    private var currentPage = 0
+    private var totalPages = 1
 
     init(repository: MoviesRepository) {
         self.repository = repository
@@ -34,6 +37,9 @@ class MoviesListViewModel: ObservableObject {
     }
 
     func loadMovies() {
+        currentPage = 0
+        totalPages = 1
+        movies = []
         isLoading = true
         errorMessage = nil
 
@@ -48,9 +54,37 @@ class MoviesListViewModel: ObservableObject {
                 if case let .failure(error) = completion {
                     self.errorMessage = error.localizedDescription
                 }
-            } receiveValue: { movies, genres in
-                self.movies = movies
+            } receiveValue: { moviesPage, genres in
+                self.currentPage = moviesPage.page
+                self.totalPages = moviesPage.totalPages
+                self.movies = moviesPage.movies
                 self.genres = genres
+            }
+            .store(in: &cancellables)
+    }
+
+    func loadNextPageIfNeeded(currentMovie: Movie) {
+        guard shouldLoadNextPage(after: currentMovie) else {
+            return
+        }
+
+        isLoadingMore = true
+
+        repository.fetchMovies(page: currentPage + 1)
+            .receive(on: DispatchQueue.main)
+            .sink { completion in
+                self.isLoadingMore = false
+
+                if case let .failure(error) = completion {
+                    self.errorMessage = error.localizedDescription
+                }
+            } receiveValue: { moviesPage in
+                self.currentPage = moviesPage.page
+                self.totalPages = moviesPage.totalPages
+
+                let existingIDs = Set(self.movies.map(\.id))
+                let newMovies = moviesPage.movies.filter { !existingIDs.contains($0.id) }
+                self.movies.append(contentsOf: newMovies)
             }
             .store(in: &cancellables)
     }
@@ -61,5 +95,22 @@ class MoviesListViewModel: ObservableObject {
         } else {
             selectedGenreID = genreID
         }
+    }
+
+    private func shouldLoadNextPage(after movie: Movie) -> Bool {
+        guard !isLoading,
+              !isLoadingMore,
+              searchText.isEmpty,
+              selectedGenreID == nil,
+              currentPage < totalPages else {
+            return false
+        }
+
+        let thresholdIndex = max(movies.count - 6, 0)
+        guard let currentIndex = movies.firstIndex(where: { $0.id == movie.id }) else {
+            return false
+        }
+
+        return currentIndex >= thresholdIndex
     }
 }

@@ -21,12 +21,11 @@ struct MoviesListView: View {
             ZStack {
                 Color.black.ignoresSafeArea()
 
-                ScrollView(showsIndicators: false) {
                     VStack(alignment: .leading, spacing: 18) {
                         SearchHeader(
                             searchText: $viewModel.searchText,
                             selectedGenreName: selectedGenreName,
-                            clearSelection: { viewModel.selectedGenreID = nil }
+                            clearSelection: { viewModel.selectedGenreID = nil;viewModel.searchText = "" }
                         )
 
                         Text("Watch New Movies")
@@ -39,6 +38,9 @@ struct MoviesListView: View {
                             selectedGenreID: viewModel.selectedGenreID,
                             onTap: viewModel.toggleGenre(_:)
                         )
+                        .zIndex(1)
+                        
+                        ScrollView(showsIndicators: false) {
 
                         LazyVGrid(columns: columns, spacing: 12) {
                             ForEach(viewModel.filteredMovies, id: \.id) { movie in
@@ -53,8 +55,20 @@ struct MoviesListView: View {
                                     MovieCardView(movie: movie)
                                 }
                                 .buttonStyle(.plain)
+                                .onAppear {
+                                    viewModel.loadNextPageIfNeeded(currentMovie: movie)
+                                }
+                            }
+
+                            if viewModel.isLoadingMore {
+                                ProgressView()
+                                    .tint(.yellow)
+                                    .frame(maxWidth: .infinity)
+                                    .padding(.vertical, 16)
+                                    .gridCellColumns(columns.count)
                             }
                         }
+                        .zIndex(0)
                         .padding(.horizontal, 16)
                         .padding(.bottom, 24)
                     }
@@ -139,11 +153,16 @@ private struct GenreFilterRow: View {
                                     .stroke(Color.yellow.opacity(0.85), lineWidth: 1)
                             }
                             .clipShape(Capsule())
+                            .contentShape(Capsule())
                     }
+                    .buttonStyle(.plain)
                 }
             }
             .padding(.horizontal, 16)
+            .padding(.vertical, 4)
         }
+        .contentShape(Rectangle())
+        .padding(.bottom, 4)
     }
 }
 

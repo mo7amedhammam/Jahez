@@ -67,18 +67,19 @@ extension MoviesEndpoint {
             return [
                 QueryKeys.page: page,
                 QueryKeys.includeAdult: includeAdult ? "true" : "false",
-                QueryKeys.sortBy: sortBy.rawValue,
-                "language": "en-US"
+                QueryKeys.sortBy: sortBy.rawValue
             ]
             
         case .details, .genres:
-            return ["language": "en-US"]
+            return nil
         }
     }
     
     var headers: HTTPHeaders {
         return [
             "Authorization": "Bearer \(APIConstants.bearerToken)"
+        ,
+            "accept": "application/json"
         ]
     }
 }

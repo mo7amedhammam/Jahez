@@ -35,7 +35,7 @@ struct MovieDetailsDTO: Decodable {
 }
 
 //Domain --> Model
-struct MovieDetails {
+struct MovieDetails: Codable {
     let id: Int
     let title: String
     let overview: String

@@ -13,20 +13,22 @@ struct MovieDetailsView: View {
     @Environment(\.dismiss) private var dismiss
 
     var body: some View {
-        ZStack(alignment: .top) {
-            Color.black.ignoresSafeArea()
+        GeometryReader { geometry in
+            ZStack(alignment: .top) {
+                Color.black.ignoresSafeArea()
 
-            content
-                .loadingStateView(
-                    isLoading: viewModel.isLoading,
-                    message: "Fetching movie details..."
-                )
-                .errorStateView(
-                    message: viewModel.errorMessage,
-                    buttonAction: {
-                        viewModel.loadMovieDetails()
-                    }
-                )
+                content()
+                    .loadingStateView(
+                        isLoading: viewModel.isLoading,
+                        message: "Fetching movie details..."
+                    )
+                    .errorStateView(
+                        message: viewModel.errorMessage,
+                        buttonAction: {
+                            viewModel.loadMovieDetails()
+                        }
+                    )
+            }
         }
         .toolbar(.hidden, for: .navigationBar)
         .task {
@@ -37,7 +39,7 @@ struct MovieDetailsView: View {
     }
 
     @ViewBuilder
-    private var content: some View {
+    private func content() -> some View {
         if let movie = viewModel.movie {
             ScrollView(showsIndicators: false) {
                 VStack(alignment: .leading, spacing: 0) {
@@ -60,7 +62,7 @@ struct MovieDetailsView: View {
                             )
                         }
 
-                        topBar
+                        topBar()
                     }
 
                     detailsSection(movie)
@@ -74,7 +76,7 @@ struct MovieDetailsView: View {
         }
     }
 
-    private var topBar: some View {
+    private func topBar() -> some View {
         HStack {
             Button(action: { dismiss() }) {
                 Image(systemName: "chevron.left")
@@ -87,17 +89,10 @@ struct MovieDetailsView: View {
 
             Spacer()
 
-            Button(action: {}) {
-                Image(systemName: "square.and.arrow.up")
-                    .font(.system(size: 18, weight: .semibold))
-                    .foregroundStyle(.white)
-                    .frame(width: 36, height: 36)
-                    .background(Color.black.opacity(0.35))
-                    .clipShape(Circle())
-            }
         }
         .padding(.horizontal, 16)
-        .padding(.top, 16)
+        .padding(.top,16)
+        .frame(maxWidth: .infinity, alignment: .top)
     }
 
     @ViewBuilder
@@ -114,10 +109,12 @@ struct MovieDetailsView: View {
                 Text(titleText(for: movie))
                     .font(.system(size: 18, weight: .bold))
                     .foregroundStyle(.white)
+                    .frame(maxWidth: .infinity, alignment: .leading)
 
                 Text(genreText(for: movie))
                     .font(.system(size: 14, weight: .medium))
                     .foregroundStyle(.white.opacity(0.78))
+                    .frame(maxWidth: .infinity, alignment: .leading)
 
                 if !movie.tagline.isEmpty {
                     Text(movie.tagline)
@@ -142,7 +139,9 @@ struct MovieDetailsView: View {
                     Link(movie.homepage, destination: homepageURL)
                         .font(.system(size: 14, weight: .medium))
                         .foregroundStyle(.cyan)
-                        .lineLimit(1)
+                        .lineLimit(2)
+                        .multilineTextAlignment(.leading)
+                        .frame(maxWidth: .infinity, alignment: .leading)
                 }
             }
 
@@ -198,6 +197,7 @@ struct MovieDetailsView: View {
             Text(value.isEmpty ? "-" : value)
                 .font(.system(size: 14, weight: .medium))
                 .foregroundStyle(.white.opacity(0.82))
+                .fixedSize(horizontal: false, vertical: true)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
     }
@@ -206,9 +206,8 @@ struct MovieDetailsView: View {
 #Preview {
     MovieDetailsView(
         viewModel: MovieDetailsViewModel(
-            movieID: 1,
+            movieID: 878,
             repository: MovieDetailsRepositoryImpl()
         )
     )
 }
-

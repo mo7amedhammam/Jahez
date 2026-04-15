@@ -26,14 +26,13 @@ class APIClient {
         let url = endpoint.baseURL + endpoint.path
         let allParams = defaultQueryParams
             .merging(endpoint.parameters ?? [:]) { _, new in new }
-        
         return AF.request(
             url,
             method: endpoint.method,
             parameters: allParams,
             encoding: URLEncoding.default,
             headers: endpoint.headers,
-            requestModifier: { $0.timeoutInterval = 30 }
+            requestModifier: { $0.timeoutInterval = 10 }
         )
         .validate(statusCode: 200..<300)
         .publishData()
