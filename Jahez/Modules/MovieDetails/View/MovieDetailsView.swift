@@ -24,8 +24,13 @@ struct MovieDetailsView: View {
                     )
                     .errorStateView(
                         message: viewModel.errorMessage,
+                        buttonTitle: (viewModel.shouldShowOfflineAlert ? "Back" : "Try Again"),
                         buttonAction: {
-                            viewModel.loadMovieDetails()
+                            if viewModel.shouldShowOfflineAlert{
+                                dismiss()
+                            }else{
+                                viewModel.loadMovieDetails()
+                            }
                         }
                     )
             }

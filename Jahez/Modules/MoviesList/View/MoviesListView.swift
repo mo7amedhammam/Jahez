@@ -172,22 +172,16 @@ private struct MovieCardView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
-            AsyncImage(url: URL(string: movie.posterURL ?? "")) { phase in
-                switch phase {
-                case .success(let image):
-                    image
-                        .resizable()
-                        .scaledToFill()
-                case .failure, .empty:
-                    ZStack {
-                        Color.white.opacity(0.08)
-                        Image(systemName: "film")
-                            .font(.system(size: 28, weight: .medium))
-                            .foregroundStyle(.white.opacity(0.6))
-                    }
-                @unknown default:
-                    EmptyView()
-                }
+            ZStack {
+                Color.white.opacity(0.08)
+                Image(systemName: "film")
+                    .font(.system(size: 28, weight: .medium))
+                    .foregroundStyle(.white.opacity(0.6))
+
+                RemoteImageView(
+                    urlString: movie.posterURL,
+                    contentMode: .fill
+                )
             }
             .frame(maxWidth: .infinity)
             .frame(height: 185)

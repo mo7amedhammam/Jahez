@@ -21,7 +21,7 @@ struct RemoteImageView: View {
                 }
                 .retry(maxCount: 2, interval: .seconds(2))
                 .resizable()
-                .aspectRatio(contentMode: SwiftUI.ContentMode.fill)
+                .aspectRatio(contentMode: contentMode)
                 .clipped()
                 .clipShape(RoundedRectangle(cornerRadius: cornerRadius))
         } else {

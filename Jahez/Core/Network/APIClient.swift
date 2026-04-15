@@ -37,8 +37,14 @@ class APIClient {
         .validate(statusCode: 200..<300)
         .publishData()
         .tryMap { response in
+            if let error = response.error {
+                if error.isSessionTaskError {
+                    throw NetworkError.noConnection
+                }
+            }
+
             guard let httpResponse = response.response else {
-                throw NetworkError.invalidJSON("No HTTP response")
+                throw NetworkError.noResponse("No HTTP response")
             }
 
             let statusCode = httpResponse.statusCode
@@ -52,12 +58,6 @@ class APIClient {
                 print("⬅️ [Response]: \(json)")
             }
             #endif
-
-            if let error = response.error {
-                if error.isSessionTaskError {
-                    throw NetworkError.noConnection
-                }
-            }
 
             if (200..<300).contains(statusCode) {
                 do {

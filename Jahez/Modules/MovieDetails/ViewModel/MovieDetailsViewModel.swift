@@ -14,6 +14,7 @@ final class MovieDetailsViewModel: ObservableObject {
     @Published var movie: MovieDetails?
     @Published var isLoading = false
     @Published var errorMessage: String?
+    @Published var shouldShowOfflineAlert = false
 
     private let movieID: Int
     private let repository: MovieDetailsRepository
@@ -27,6 +28,7 @@ final class MovieDetailsViewModel: ObservableObject {
     func loadMovieDetails() {
         isLoading = true
         errorMessage = nil
+        shouldShowOfflineAlert = false
 
         repository.fetchMovieDetails(id: movieID)
             .receive(on: DispatchQueue.main)
@@ -34,7 +36,12 @@ final class MovieDetailsViewModel: ObservableObject {
                 self.isLoading = false
 
                 if case let .failure(error) = completion {
-                    self.errorMessage = error.localizedDescription
+                    if case NetworkError.noConnection = error {
+                        self.shouldShowOfflineAlert = true
+                        self.errorMessage = error.localizedDescription
+                    } else {
+                        self.errorMessage = error.localizedDescription
+                    }
                 }
             } receiveValue: { movie in
                 self.movie = movie
