@@ -10,35 +10,16 @@
 		908251042F8FA59900EE5FB3 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 908251032F8FA59900EE5FB3 /* RealmSwift */; };
 		90BE85F22F896F6500AB7E8B /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 90BE85F12F896F6500AB7E8B /* Kingfisher */; };
 		90BE85F52F89705900AB7E8B /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 90BE85F42F89705900AB7E8B /* Alamofire */; };
-		A10A000E2F90000100AA0001 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 908251032F8FA59900EE5FB3 /* RealmSwift */; };
-		A10A000F2F90000100AA0001 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 90BE85F12F896F6500AB7E8B /* Kingfisher */; };
-		A10A00102F90000100AA0001 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 90BE85F42F89705900AB7E8B /* Alamofire */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		A10A000C2F90000100AA0001 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 90BE85B12F894CF000AB7E8B /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 90BE85B82F894CF000AB7E8B;
-			remoteInfo = Jahez;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
-		90BE85B92F894CF000AB7E8B /* Jahez.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = Jahez.app; path = "/Users/mohamedhammam/Desktop/personal/Work/Jahez/build/Debug-iphoneos/Jahez.app"; sourceTree = "<absolute>"; };
-		90EAF5882F8FC6D20080C428 /* JahezTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JahezTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		905C5EF42F8FCE7A00E14D7B /* Jahez.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = Jahez.app; path = "/Users/mohamedhammam/Desktop/personal/Work/Jahez/build/Debug-iphoneos/Jahez.app"; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		90BE85BB2F894CF000AB7E8B /* Jahez */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = Jahez;
-			sourceTree = "<group>";
-		};
-		A10A00022F90000100AA0001 /* JahezTests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = JahezTests;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -54,16 +35,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A10A00042F90000100AA0001 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A10A000E2F90000100AA0001 /* RealmSwift in Frameworks */,
-				A10A000F2F90000100AA0001 /* Kingfisher in Frameworks */,
-				A10A00102F90000100AA0001 /* Alamofire in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -71,8 +42,6 @@
 			isa = PBXGroup;
 			children = (
 				90BE85BB2F894CF000AB7E8B /* Jahez */,
-				A10A00022F90000100AA0001 /* JahezTests */,
-				90EAF5882F8FC6D20080C428 /* JahezTests.xctest */,
 			);
 			sourceTree = "<group>";
 		};
@@ -101,34 +70,8 @@
 				908251032F8FA59900EE5FB3 /* RealmSwift */,
 			);
 			productName = Jahez;
-			productReference = 90BE85B92F894CF000AB7E8B /* Jahez.app */;
+			productReference = 905C5EF42F8FCE7A00E14D7B /* Jahez.app */;
 			productType = "com.apple.product-type.application";
-		};
-		A10A00032F90000100AA0001 /* JahezTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = A10A000A2F90000100AA0001 /* Build configuration list for PBXNativeTarget "JahezTests" */;
-			buildPhases = (
-				A10A00052F90000100AA0001 /* Sources */,
-				A10A00042F90000100AA0001 /* Frameworks */,
-				A10A00062F90000100AA0001 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				A10A000D2F90000100AA0001 /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				A10A00022F90000100AA0001 /* JahezTests */,
-			);
-			name = JahezTests;
-			packageProductDependencies = (
-				90BE85F12F896F6500AB7E8B /* Kingfisher */,
-				90BE85F42F89705900AB7E8B /* Alamofire */,
-				908251032F8FA59900EE5FB3 /* RealmSwift */,
-			);
-			productName = JahezTests;
-			productReference = 90EAF5882F8FC6D20080C428 /* JahezTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -142,10 +85,6 @@
 				TargetAttributes = {
 					90BE85B82F894CF000AB7E8B = {
 						CreatedOnToolsVersion = 26.4;
-					};
-					A10A00032F90000100AA0001 = {
-						CreatedOnToolsVersion = 26.4;
-						TestTargetID = 90BE85B82F894CF000AB7E8B;
 					};
 				};
 			};
@@ -169,20 +108,12 @@
 			projectRoot = "";
 			targets = (
 				90BE85B82F894CF000AB7E8B /* Jahez */,
-				A10A00032F90000100AA0001 /* JahezTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		90BE85B72F894CF000AB7E8B /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A10A00062F90000100AA0001 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -199,22 +130,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A10A00052F90000100AA0001 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		A10A000D2F90000100AA0001 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 90BE85B82F894CF000AB7E8B /* Jahez */;
-			targetProxy = A10A000C2F90000100AA0001 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		90BE85C22F894CF300AB7E8B /* Debug */ = {
@@ -402,71 +318,6 @@
 			};
 			name = Release;
 		};
-		A10A00082F90000100AA0001 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 5S2882FKQQ;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 26.4;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@loader_path/Frameworks",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = Astek.JahezTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				STRING_CATALOG_GENERATE_SYMBOLS = NO;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
-				SUPPORTS_MACCATALYST = NO;
-				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
-				SWIFT_APPROACHABLE_CONCURRENCY = YES;
-				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
-				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Jahez.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Jahez";
-				TEST_TARGET_NAME = Jahez;
-			};
-			name = Debug;
-		};
-		A10A00092F90000100AA0001 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 5S2882FKQQ;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 26.4;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@loader_path/Frameworks",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = Astek.JahezTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				STRING_CATALOG_GENERATE_SYMBOLS = NO;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
-				SUPPORTS_MACCATALYST = NO;
-				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_APPROACHABLE_CONCURRENCY = YES;
-				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
-				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Jahez.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Jahez";
-				TEST_TARGET_NAME = Jahez;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -484,15 +335,6 @@
 			buildConfigurations = (
 				90BE85C52F894CF300AB7E8B /* Debug */,
 				90BE85C62F894CF300AB7E8B /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		A10A000A2F90000100AA0001 /* Build configuration list for PBXNativeTarget "JahezTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				A10A00082F90000100AA0001 /* Debug */,
-				A10A00092F90000100AA0001 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
