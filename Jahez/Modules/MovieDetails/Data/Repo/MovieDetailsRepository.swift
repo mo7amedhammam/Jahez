@@ -45,28 +45,18 @@ class MovieDetailsRepositoryImpl: MovieDetailsRepository {
 
 final class MovieDetailsCacheStore {
 
-    private let defaults: UserDefaults
-    private let encoder = JSONEncoder()
-    private let decoder = JSONDecoder()
+    private let cacheStore: RealmCacheStore
 
-    init(defaults: UserDefaults = .standard) {
-        self.defaults = defaults
+    init(cacheStore: RealmCacheStore = RealmCacheStore()) {
+        self.cacheStore = cacheStore
     }
 
     func save(_ movie: MovieDetails) {
-        guard let data = try? encoder.encode(movie) else {
-            return
-        }
-
-        defaults.set(data, forKey: cacheKey(for: movie.id))
+        cacheStore.save(movie, forKey: cacheKey(for: movie.id))
     }
 
     func loadMovie(id: Int) -> MovieDetails? {
-        guard let data = defaults.data(forKey: cacheKey(for: id)) else {
-            return nil
-        }
-
-        return try? decoder.decode(MovieDetails.self, from: data)
+        return cacheStore.load(MovieDetails.self, forKey: cacheKey(for: id))
     }
 
     private func cacheKey(for movieID: Int) -> String {

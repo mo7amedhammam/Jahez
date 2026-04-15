@@ -68,49 +68,36 @@ final class MoviesCacheStore {
 
     private enum CacheKeys {
         static let genres = "movies.list.genres"
-        static let totalPages = "movies.list.totalPages"
     }
 
-    private let defaults: UserDefaults
-    private let encoder = JSONEncoder()
-    private let decoder = JSONDecoder()
+    private let cacheStore: RealmCacheStore
 
-    init(defaults: UserDefaults = .standard) {
-        self.defaults = defaults
+    init(cacheStore: RealmCacheStore = RealmCacheStore()) {
+        self.cacheStore = cacheStore
     }
 
     func saveGenres(_ genres: [Genre]) {
-        guard let data = try? encoder.encode(genres) else {
-            return
-        }
-
-        defaults.set(data, forKey: CacheKeys.genres)
+        cacheStore.save(genres, forKey: CacheKeys.genres)
     }
 
     func loadGenres() -> [Genre]? {
-        guard let data = defaults.data(forKey: CacheKeys.genres) else {
-            return nil
-        }
-
-        return try? decoder.decode([Genre].self, from: data)
+        return cacheStore.load([Genre].self, forKey: CacheKeys.genres)
     }
 
     func saveMoviesPage(_ moviesPage: MoviesPage) {
-        guard let data = try? encoder.encode(moviesPage.movies) else {
-            return
-        }
-
-        defaults.set(data, forKey: moviesPageKey(for: moviesPage.page))
-        defaults.set(moviesPage.totalPages, forKey: CacheKeys.totalPages)
+        cacheStore.save(
+            moviesPage.movies,
+            forKey: moviesPageKey(for: moviesPage.page),
+            metadata: moviesPage.totalPages
+        )
     }
 
     func loadMoviesPage(page: Int) -> MoviesPage? {
-        guard let data = defaults.data(forKey: moviesPageKey(for: page)),
-              let movies = try? decoder.decode([Movie].self, from: data) else {
+        guard let movies = cacheStore.load([Movie].self, forKey: moviesPageKey(for: page)) else {
             return nil
         }
 
-        let totalPages = defaults.integer(forKey: CacheKeys.totalPages)
+        let totalPages = cacheStore.metadata(forKey: moviesPageKey(for: page)) ?? page
 
         return MoviesPage(
             page: page,

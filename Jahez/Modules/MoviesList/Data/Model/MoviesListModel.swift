@@ -54,7 +54,7 @@ struct MoviesPage {
     let movies: [Movie]
 }
 
-struct Movie: Codable {
+struct Movie: Codable, Equatable {
     let id: Int
     let title: String
     let posterURL: String?
